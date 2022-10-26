@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Base\Base.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Base">
+      <UniqueIdentifier>{92d21a0f-3d8d-4a8b-8c39-31fd384788c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{3f01e8b2-9cb0-43f7-a56b-0dde0f51209f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Base\Base.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
