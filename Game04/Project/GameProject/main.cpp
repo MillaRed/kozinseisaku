@@ -4,6 +4,7 @@
 #define SCREEN_HEIGHT 720
 
 #include "Base/Base.h"
+#include "Game/Map.h"
 
 //--------------------------------------------
 //グローバル変数領域
@@ -59,7 +60,8 @@ void Init(void)
 	//初期化の命令を書く
 	//ゲーム起動時に一度だけ呼ばれる
 	//-----------------------------------------------------
-
+	//画像読み込み
+	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
 
 	
 
@@ -68,7 +70,8 @@ void Init(void)
 
 
 
-
+	//マップの生成
+	Base::Add(new Map());
 
 }
 
