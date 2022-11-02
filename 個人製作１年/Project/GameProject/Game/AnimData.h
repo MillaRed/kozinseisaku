@@ -13,6 +13,8 @@ enum  {
 	eAnimAttack02End,
 	eAnimAttack03,
 	eAnimAttack03End,
+	eAnimAttack04,
+	eAnimAttack04End,
 	eAnimDamage,
 	eAnimDamageEnd,
 	eAnimDeath,

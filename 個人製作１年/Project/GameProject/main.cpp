@@ -3,8 +3,12 @@
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 720
 
+#include "Base/Base.h"
 #include "Game/AnimData.h"
 //#include "Title/Title.h"
+#include "Game/Map.h"
+#include "Game/Player.h"
+#include "Game/Field.h"
 
 
 //--------------------------------------------
@@ -62,14 +66,13 @@ void Init(void)
 	/*
 	//画像の事前読み込み
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
-	ADD_RESOURCE("MapTip", CImage::CreateImage("Image/MapTip.png"));
+	
 	ADD_RESOURCE("Dungeon", CImage::CreateImage("Image/Dungeon.png"));
 	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
 	ADD_RESOURCE("Door", CImage::CreateImage("Image/Door.png"));
 	ADD_RESOURCE("Goal", CImage::CreateImage("Image/Goal.png"));
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 256, 256));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 256, 256));
 	ADD_RESOURCE("Effect_Slash", CImage::CreateImage("Image/Effect_Slash.png", effect_slash_anim_data, 128, 128));
 	ADD_RESOURCE("Effect_Smoke", CImage::CreateImage("Image/Effect_Smoke.png", effect_smoke_anim_data, 128, 128));
@@ -80,10 +83,17 @@ void Init(void)
 	SOUND("SE_Zasi")->Load("Sound/SE/SE_Zasi.wav");
 	SOUND("BGM_Game")->Load("Sound/BGM/BGM_Game.wav");
 	*/
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 256, 256));
+	ADD_RESOURCE("Map", CImage::CreateImage("Image/MapTip.png"));
+
 	
 	//Base::Add(new Title());
-
-
+	//マップの生成
+	Base::Add(new Map());
+	//プレイヤーの生成
+	Base::Add(new Player(CVector2D(200, 500), false));
+	//フィールドの生成
+	//Base::Add(new Field());
 
 
 }
