@@ -16,6 +16,12 @@ class Player :public Base {
 	bool m_flip;
 	//着地フラグ
 	bool m_is_ground;
+	//攻撃番号
+	int m_attack_no;
+	//ダメージ番号
+	int m_damage_no;
+	//ヒットポイント
+	int m_hp;
 	//各状態での挙動
 	void StateIdle();
 	void StateAttack();

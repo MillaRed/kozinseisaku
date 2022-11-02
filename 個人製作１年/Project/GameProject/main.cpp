@@ -83,7 +83,7 @@ void Init(void)
 	SOUND("SE_Zasi")->Load("Sound/SE/SE_Zasi.wav");
 	SOUND("BGM_Game")->Load("Sound/BGM/BGM_Game.wav");
 	*/
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 256, 256));
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 196, 196));
 	ADD_RESOURCE("Map", CImage::CreateImage("Image/MapTip.png"));
 
 	

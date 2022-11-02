@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "AnimData.h"
 #include "Field.h"
+#include "Slash.h"
 
 void Player::StateIdle() {
 	//移動量
@@ -33,6 +34,8 @@ void Player::StateIdle() {
 	//攻撃
 	if (PUSH(CInput::eButton1)) {
 		//攻撃状態へ移行
+		m_state = eState_Attack;
+		m_attack_no++;
 	}
 	//ジャンプ中なら
 	if (!m_is_ground) {
@@ -59,6 +62,15 @@ void Player::StateIdle() {
 void Player::StateAttack(){
 	//攻撃アニメーションへ変更
 	m_img.ChangeAnimation(eAnimAttack01, false);
+	//
+	if (m_img.GetIndex() == 3) {
+		if (m_flip) {
+			Base::Add(new Slash(m_pos + CVector2D(-64, -64), m_flip, eType_Player_Attack, m_attack_no));
+		}
+		else {
+			Base::Add(new Slash(m_pos + CVector2D(64, -64), m_flip, eType_Player_Attack, m_attack_no));
+		}
+	}
 	//アニメーションが終了したら
 	if (m_img.CheckAnimationEnd()) {
 		//通常状態へ移行
@@ -93,6 +105,14 @@ Player::Player(const CVector2D& p,bool flip):Base(eType_Player) {
 	m_flip = flip;
 	//通常状態へ
 	m_state = eState_Idle;
+	//着地フラグ
+	m_is_ground = false;
+	//攻撃番号
+	m_attack_no = rand();
+	//ダメージ番号
+	m_damage_no = -1;
+	//ヒットポイント
+	m_hp = 100;
 }
 
 void Player::Update(){
