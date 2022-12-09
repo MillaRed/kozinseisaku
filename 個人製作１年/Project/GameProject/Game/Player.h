@@ -12,6 +12,7 @@ class Player :public Base {
 	//状態変数
 	int m_state;
 	CImage m_img;
+	int jumpcount = 0;
 	//反転フラグ
 	bool m_flip;
 	//着地フラグ
@@ -22,6 +23,11 @@ class Player :public Base {
 	int m_damage_no;
 	//ヒットポイント
 	int m_hp;
+	//エリアチェンジフラグ
+	bool m_enable_area_change;
+	//エリアチェンジオブジェクトに触れているフラグ
+	bool m_hit_area_change;
+
 	//各状態での挙動
 	void StateIdle();
 	void StateAttack();

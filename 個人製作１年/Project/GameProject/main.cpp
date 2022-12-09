@@ -9,6 +9,8 @@
 #include "Game/Map.h"
 #include "Game/Player.h"
 #include "Game/Field.h"
+#include "Game/Boss.h"
+#include "Title/Title.h"
 
 
 //--------------------------------------------
@@ -20,10 +22,10 @@ void MainLoop(void) {
 	//ゲーム中の動きはここに書く
 	//ゲーム中はこの関数_を1秒間に60回呼び出している
 	//--------------------------------------------------------------
-//	Base::CheckKillAll();
-//	Base::UpdateAll();
-//	Base::CollisionAll();
-//	Base::DrawAll();
+	Base::CheckKillAll();
+	Base::UpdateAll();
+	Base::CollisionAll();
+	Base::DrawAll();
 
 
 
@@ -73,8 +75,6 @@ void Init(void)
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
 	ADD_RESOURCE("Door", CImage::CreateImage("Image/Door.png"));
 	ADD_RESOURCE("Goal", CImage::CreateImage("Image/Goal.png"));
-	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 256, 256));
-	ADD_RESOURCE("Effect_Slash", CImage::CreateImage("Image/Effect_Slash.png", effect_slash_anim_data, 128, 128));
 	ADD_RESOURCE("Effect_Smoke", CImage::CreateImage("Image/Effect_Smoke.png", effect_smoke_anim_data, 128, 128));
 	ADD_RESOURCE("Effect_Blood", CImage::CreateImage("Image/Effect_Blood.png", effect_blood_anim_data, 128, 128));
 	SOUND("SE_Shot")->Load("Sound/SE/SE_Shot.wav");
@@ -84,14 +84,14 @@ void Init(void)
 	SOUND("BGM_Game")->Load("Sound/BGM/BGM_Game.wav");
 	*/
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 196, 196));
+	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 144, 144));
 	ADD_RESOURCE("Map", CImage::CreateImage("Image/MapTip.png"));
+	ADD_RESOURCE("Effect_Slash", CImage::CreateImage("Image/Effect_Slash.png", effect_slash_anim_data, 128, 128));
+	//ADD_RESOURCE("Boss", CImage::CreateImage("Image/Boss.png",boss_anim_data,196,196));
+	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 
-	
-	//Base::Add(new Title());
-	//マップの生成
-	Base::Add(new Map());
-	//プレイヤーの生成
-	Base::Add(new Player(CVector2D(200, 500), false));
+	Base::Add(new Title());
+
 	//フィールドの生成
 	//Base::Add(new Field());
 

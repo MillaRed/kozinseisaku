@@ -19,6 +19,8 @@ enum {
 	eType_Arrow,
 	eType_GameClear,
 	eType_GameOver,
+	eType_Boss,
+	eType_AreaChange,
 };
 
 //重力加速度
@@ -81,6 +83,13 @@ public:
 	void SetKill() {
 		m_kill = true;
 	}
+	///<summary>
+	/// 座標の設定
+	/// </summary>
+	/// <param name="pos">座標</param>
+	void ResetPos(const CVector2D& pos) {
+		m_pos = m_pos_old = pos;
+	}
 	/// <summary>
 	/// 当たり判定検証
 	/// </summary>
@@ -111,6 +120,12 @@ public:
 	/// 全てのオブジェクトを削除
 	/// </summary>
 	static void KillAll();
+
+	/// <summary>
+	/// 指定した種類のオブジェクトを削除
+	/// </summary>
+	/// <param name="type">オブジェクトの種類</param>
+	static void KillByType(int type);
 
 	/// <summary>
 	/// オブジェクトの追加

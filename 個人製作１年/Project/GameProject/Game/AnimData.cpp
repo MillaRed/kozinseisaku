@@ -2,167 +2,116 @@
 
 
 static TexAnim playerIdle[] = {
-	{ 0,2 },
-	{ 1,2 },
-	{ 2,2 },
-	{ 3,2 },
-	{ 4,2 },
+	{ 19,5 },
+	{ 18,5 },
+	{ 17,5 },
+	{ 16,5 },
 };
 static TexAnim playerRun[] = {
-	{ 105,2 },
-	{ 106,2 },
-	{ 107,2 },
-	{ 108,2 },
-	{ 109,2 },
+	{ 114,3 },
+	{ 113,3 },
+	{ 112,3 },
+	{ 111,5 },
 };
 static TexAnim playerJumpUp[] = {
-	{ 101,2 },
-	{ 102,2 },
-	{ 103,2 },
-	{ 104,2 },
-	{ 105,2 },
+	{ 114,3 },
+	{ 113,3 },
+	{ 112,3 },
+	{ 111,3 },
 };
 static TexAnim playerJumpDown[] = {
-	{ 101,2 },
-	{ 102,2 },
-	{ 103,2 },
-	{ 104,2 },
-	{ 105,2 },
+	{ 114,3 },
+	{ 113,3 },
+	{ 112,3 },
+	{ 111,3 },
 };
 static TexAnim playerAttack01[] = {
-	{ 5,3 },
-	{ 6,3 },
-	{ 7,3 },
-	{ 8,2 },
-	{ 9,2 },
+	{ 14,3 },
+	{ 13,3 },
+	{ 12,3 },
+	{ 11,5 },
 };
 static TexAnim playerAttack01End[] = {
 	{ 0,0 },
 };
 static TexAnim playerAttack02[] = {
-	{ 25,6 },
-	{ 26,6 },
-	{ 27,4 },
-	{ 28,2 },
-	{ 29,2 },
+	{ 34,6 },
+	{ 33,6 },
+	{ 32,4 },
+	{ 31,2 },
 };
 static TexAnim playerAttack02End[] = {
 	{ 0,0 },
 };
 static TexAnim playerAttack03[] = {
-	{ 45,6 },
-	{ 46,6 },
-	{ 47,4 },
-	{ 48,4 },
-	{ 49,3 },
+	{ 54,6 },
+	{ 53,6 },
+	{ 52,4 },
+	{ 51,4 },
 };
 static TexAnim playerAttack03End[] = {
-	{ 0,2 },
-	{ 1,2 },
-	{ 2,2 },
-	{ 3,2 },
-	{ 4,2 },
+	{ 0,0 },
 }; 
 
 static TexAnim playerDamage[] = {
-	{ 88,2 },
-	{ 89,2 },
-	{ 90,2 },
-	{ 91,2 },
+	{ 99,2 },
+	{ 98,2 },
+	{ 97,2 },
+	{ 96,2 },
 };
 static TexAnim playerDamageEnd[] = {
-	{ 92,2 },
-	{ 93,2 },
-	{ 94,2 },
-	{ 95,2 },
+	{ 0,0 },
 };
 static TexAnim playerDeath[] = {
-	{ 96,4 },
-	{ 97,4 },
-	{ 98,8 },
-	{ 99,4 },
-	{ 100,4 },
-	{ 101,4 },
-	{ 102,4 },
-	{ 103,4 },
+	{ 24,4 },
+	{ 23,4 },
+	{ 22,4 },
+	{ 21,4 },
+	{ 109,4 },
+	{ 108,4 },
+	{ 107,4 },
+	{ 106,4 },
 };
 
 static TexAnim playerDown[] = {
-	{ 104,4 },
-	{ 105,4 },
-	{ 106,4 },
-	{ 107,4 },
-	{ 108,4 },
+	{ 0,0 },
 };
 static TexAnim playerDownGround[] = {
-	{ 109,4 },
-	{ 110,4 },
-	{ 111,4 },
+	{ 0,0 },
 };
 static TexAnim playerWakeup[] = {
-	{ 112,4 },
-	{ 113,4 },
-	{ 114,4 },
-	{ 115,4 },
-	{ 116,4 },
-	{ 117,4 },
-	{ 118,4 },
+	{ 0,0 },
 };
 static TexAnim playerGuard[] = {
-	//	{ 120,4 },
-	//	{ 121,4 },
-	{ 122,4 },
+	{ 79,4 },
+	{ 78,4 },
+	{ 77,4 },
+	{ 76,4 },
 };
 static TexAnim playerGuardEnd[] = {
-	{ 122,4 },
-	{ 121,4 },
-	{ 120,4 },
+	{ 0,0 },
 };
 static TexAnim playerCrash[] = {
-	{ 128,4 },
-	{ 129,4 },
-	{ 130,4 },
-	{ 131,90 },
+	{ 0,0 },
 };
 static TexAnim playerCrash01End[] = {
-	{ 131,4 },
-	{ 130,4 },
-	{ 129,4 },
-	{ 128,4 },
+	{ 0,0 },
 };
 static TexAnim playerExtAttack01[] = {
-	{ 144,4 },
-	{ 145,4 },
-	{ 146,12 },
-	{ 147,2 },
-	{ 148,2 },
-	{ 149,2 },
-	{ 150,16 },
+	{ 0,0 },
 };
 static TexAnim playerExtAttack01End[] = {
-	{ 151,4 },
-	{ 152,4 },
+	{ 0,0 },
 };
 static TexAnim playerExtAttack02[] = {
-	{ 160,2 },
-	{ 161,2 },
-	{ 162,2 },
-	{ 163,2 },
-	{ 164,2 },
-	{ 165,2 },
-	{ 166,2 },
-	{ 167,2 },
-	{ 168,2 },
+	{ 0,0 },
 };
 static TexAnim playerExtAttack02End[] = {
-	{ 169,16 },
-	{ 170,4 },
-	{ 171,4 },
+	{ 0,0 },
+
 };
 static TexAnim playerStep[] = {
-	{ 120,4 },
-	{ 121,4 },
-	{ 122,4 },
+	{ 0,0 },
 };
 TexAnimData player_anim_data[] = {
 	ANIMDATA(playerIdle),
@@ -193,38 +142,16 @@ TexAnimData player_anim_data[] = {
 };
 
 static TexAnim enemyIdle[] = {
-	{ 0,2 },
-	{ 1,2 },
-	{ 2,2 },
-	{ 3,2 },
-	{ 4,2 },
-	{ 5,2 },
-	{ 6,2 },
-	{ 7,2 },
-	{ 8,2 },
-	{ 9,2 },
-	{ 10,2 },
-	{ 11,2 },
-	{ 12,2 },
-	{ 13,2 },
-	{ 14,2 },
+	{ 0,5 },
+	{ 1,5 },
+	{ 2,5 },
+	{ 3,5 },
 };
 static TexAnim enemyRun[] = {
-	{ 16,2 },
-	{ 17,2 },
-	{ 18,2 },
-	{ 19,2 },
-	{ 20,2 },
-	{ 21,2 },
-	{ 22,2 },
-	{ 23,2 },
-	{ 24,2 },
-	{ 25,2 },
-	{ 26,2 },
-	{ 27,2 },
-	{ 28,2 },
-	{ 29,2 },
-	{ 30,2 },
+	{ 105,2 },
+	{ 106,2 },
+	{ 107,2 },
+	{ 108,2 },
 };
 static TexAnim enemyJumpUp[] = {
 	{ 0,0 },
@@ -234,21 +161,13 @@ static TexAnim enemyJumpDown[] = {
 };
 
 static TexAnim enemyAttack01[] = {
-	{ 40,4 },
-	{ 41,4 },
-	{ 42,4 },
-	{ 43,8 },
-	{ 44,2 },
-	{ 45,3 },
-	{ 46,3 },
-	{ 47,3 },
+	{ 5,4 },
+	{ 6,4 },
+	{ 7,4 },
+	{ 8,8 },
 };
 static TexAnim enemyAttack01End[] = {
-	{ 48,2 },
-	{ 49,2 },
-	{ 50,2 },
-	{ 51,2 },
-	{ 52,2 },
+	{ 0,0 },
 };
 static TexAnim enemyAttack02[] = {
 	{ 0,0 },
@@ -263,72 +182,44 @@ static TexAnim enemyAttack03End[] = {
 	{ 0,0 },
 };
 static TexAnim enemyDamage[] = {
-	{ 88,2 },
-	{ 89,2 },
-	{ 90,2 },
-	{ 91,2 },
+	{ 80,2 },
+	{ 81,2 },
+	{ 82,2 },
+	{ 83,2 },
 };
 static TexAnim enemyDamageEnd[] = {
-	{ 92,2 },
-	{ 93,2 },
-	{ 94,2 },
-	{ 95,2 },
+	{ 0,0 },
 };
 static TexAnim enemyDeath[] = {
-	{ 96,4 },
-	{ 97,4 },
-	{ 98,8 },
-	{ 99,4 },
-	{ 100,4 },
-	{ 101,4 },
-	{ 102,4 },
-	{ 103,4 },
+	{ 80,2 },
 };
 
 static TexAnim enemyDown[] = {
-	{ 104,4 },
-	{ 105,4 },
-	{ 106,4 },
-	{ 107,4 },
-	{ 108,4 },
+	{ 0,0 },
 };
 static TexAnim enemyDownGround[] = {
-	{ 109,4 },
-	{ 110,4 },
-	{ 111,4 },
+	{ 0,0 },
 };
 static TexAnim enemyWakeup[] = {
-	{ 112,4 },
-	{ 113,4 },
-	{ 114,4 },
-	{ 115,4 },
-	{ 116,4 },
-	{ 117,4 },
-	{ 118,4 },
+	{ 0,0 },
 };
 static TexAnim enemyGuard[] = {
-	{ 0,4 },
+	{ 0,0 },
 };
 static TexAnim enemyGuardEnd[] = {
-	{ 0,4 },
+	{ 0,0 },
 };
 static TexAnim enemyCrash[] = {
-	{ 128,4 },
-	{ 129,4 },
-	{ 130,4 },
-	{ 131,60 },
+	{ 0,0 },
 };
 static TexAnim enemyCrash01End[] = {
-	{ 131,4 },
-	{ 130,4 },
-	{ 129,4 },
-	{ 128,4 },
+	{ 0,0 },
 };
 static TexAnim enemyExt01Attack[] = {
-	{ 0,4 },
+	{ 0,0 },
 };
 static TexAnim enemyExtAttack01End[] = {
-	{ 0,4 },
+	{ 0,0 },
 };
 TexAnimData enemy_anim_data[] = {
 	ANIMDATA(enemyIdle),
@@ -355,7 +246,59 @@ TexAnimData enemy_anim_data[] = {
 	ANIMDATA(enemyExtAttack01End),
 };
 
-
+static TexAnim bossIdle[] = {
+	{ 0,5 },
+	{ 1,5 },
+	{ 2,5 },
+	{ 3,5 },
+};
+static TexAnim bossRun[] = {
+	{ 40,2 },
+	{ 41,2 },
+	{ 42,2 },
+	{ 43,2 },
+};
+static TexAnim bossJumpUp[] = {
+	{ 10,0 },
+	{ 11,0 },
+	{ 12,0 },
+	{ 13,0 },
+};
+static TexAnim bossJumpDown[] = {
+	{ 0,0 },
+};
+static TexAnim bossAttack01[] = {
+	{ 5,0 },
+	{ 6,0 },
+	{ 7,0 },
+	{ 8,0 },
+};
+static TexAnim bossAttack01End[] = {
+	{ 0,0 },
+};
+static TexAnim bossDamage[] = {
+	{ 80,0 },
+	{ 81,0 },
+	{ 82,0 },
+	{ 83,0 },
+};
+static TexAnim bossDamageEnd[] = {
+	{ 0,0 },
+};
+static TexAnim bossDeath[] = {
+	{ 0,0 },
+};
+TexAnimData boss_anim_data[] = {
+	ANIMDATA(bossIdle),
+	ANIMDATA(bossRun),
+	ANIMDATA(bossJumpUp),
+	ANIMDATA(bossJumpDown),
+	ANIMDATA(bossAttack01),
+	ANIMDATA(bossAttack01End),
+	ANIMDATA(bossDamage),
+	ANIMDATA(bossDamageEnd),
+	ANIMDATA(bossDeath),
+};
 
 
 static TexAnim _effect_blood[] = {

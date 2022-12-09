@@ -2,6 +2,8 @@
 #include "AnimData.h"
 #include "Field.h"
 #include "Slash.h"
+#include "Map.h"
+#include "AreaChange.h"
 
 void Player::StateIdle() {
 	//移動量
@@ -98,9 +100,11 @@ Player::Player(const CVector2D& p,bool flip):Base(eType_Player) {
 	//再生アニメーション設定
 	m_img.ChangeAnimation(0);
 	//座標設定
-	m_pos = p;
+	m_pos_old=m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(128, 224);
+	m_img.SetCenter(126, 200);
+	//当たり判定用矩形設定
+	m_rect = CRect(-50, -100, 0, 0);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -113,9 +117,13 @@ Player::Player(const CVector2D& p,bool flip):Base(eType_Player) {
 	m_damage_no = -1;
 	//ヒットポイント
 	m_hp = 100;
+
+	m_enable_area_change = true;
+	m_hit_area_change = false;
 }
 
 void Player::Update(){
+	m_pos_old = m_pos;
 	switch (m_state) {
 		//通常状態
 	case eState_Idle:
@@ -134,26 +142,64 @@ void Player::Update(){
 		StateDown();
 		break;
 	}
+	//落ちていたら落下中状態へ移行
+	if (m_is_ground && m_vec.y > GRAVITY * 4)
+		m_is_ground = false;
+	//重力による落下
+	m_vec.y += GRAVITY;
+	m_pos += m_vec;
+	//アニメーション更新
+	m_img.UpdateAnimation();
+	//スクロール値の設定
+	m_scroll.x = m_pos.x - 1280 / 2;
+	m_scroll.y = m_pos.y - 600;
+
+	//
+	//
+	if (!m_enable_area_change && !m_hit_area_change)
+		m_enable_area_change = true;
+	m_hit_area_change = false;
 }
 
 void Player::Draw(){
 	//位置設定
-	m_img.SetPos(m_pos);
+	m_img.SetPos(GetScreenPos(m_pos));
 	//反転設定
 	m_img.SetFlipH(m_flip);
 	//描画
-	m_img, Draw();
+	m_img.Draw();
+	//当たり判定矩形表示
+	DrawRect();
 }
 
 void Player::Collision(Base* b){
 	switch (b->m_type){
+	case eType_AreaChange:
+		if (Base::CollisionRect(this, b)) {
+			//エリアチェンジに触れている
+			m_hit_area_change = true;
+			//エリアチェンジ可能なら
+			if (m_enable_area_change) {
+				if (AreaChange* a = dynamic_cast<AreaChange*>(b)) {
+					//マップとエリアチェンジオブジェクトを削除
+					KillByType(eType_Field);
+					KillByType(eType_AreaChange);
+					//次のマップを生成
+					Base::Add(new Map(a->m_stage, a->m_nextplayerpos));
+					//エリアチェンジ一時不許可
+					m_enable_area_change = false;
+				}
+			}
+		}
 	case  eType_Field:
-		//Field型へキャスト、型変換出来たら
-		if (Field* f = dynamic_cast<Field*>(b)) {
-			//地面より下に行ったら
-			if (m_pos.y > f->GetGroundY()) {
+		if (Map* m = dynamic_cast<Map*>(b)) {
+			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y));
+			if (t != 0)
+				m_pos.x = m_pos_old.x;
+			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y));
+			if (t != 0) {
 				//地面の高さに戻す
-				m_pos.y = f->GetGroundY();
+				m_pos.y = m_pos_old.y;
 				//落下速度リセット
 				m_vec.y = 0;
 				//接地フラグ
