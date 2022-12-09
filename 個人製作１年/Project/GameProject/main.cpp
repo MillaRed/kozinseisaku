@@ -70,7 +70,6 @@ void Init(void)
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	
 	ADD_RESOURCE("Dungeon", CImage::CreateImage("Image/Dungeon.png"));
-	ADD_RESOURCE("Sky", CImage::CreateImage("Image/Sky.png"));
 	ADD_RESOURCE("Town", CImage::CreateImage("Image/Town.png"));
 	ADD_RESOURCE("ForeGround", CImage::CreateImage("Image/ForeGround.png"));
 	ADD_RESOURCE("Door", CImage::CreateImage("Image/Door.png"));
@@ -89,6 +88,7 @@ void Init(void)
 	ADD_RESOURCE("Effect_Slash", CImage::CreateImage("Image/Effect_Slash.png", effect_slash_anim_data, 128, 128));
 	//ADD_RESOURCE("Boss", CImage::CreateImage("Image/Boss.png",boss_anim_data,196,196));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
+	ADD_RESOURCE("haikei", CImage::CreateImage("Image/haikei.png"));
 
 	Base::Add(new Title());
 

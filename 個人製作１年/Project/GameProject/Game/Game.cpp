@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Boss.h"
 #include "GameData.h"
+#include "Field.h"
 #include "../Title/Title.h"
 #include "../Title/Gameclear.h"
 #include "../Title/GameOver.h"

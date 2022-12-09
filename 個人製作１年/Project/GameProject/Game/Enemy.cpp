@@ -29,6 +29,11 @@ void Enemy::StateIdle() {
 		m_flip = false;
 		move_flag = true;
 	}
+	if (player->m_pos.x > m_pos.x + 64) {
+		//攻撃状態へ移行
+		m_state = eState_Attack;
+		m_attack_no++;
+	}
 	if (move_flag) {
 		//走るアニメーション
 		m_img.ChangeAnimation(eAnimRun);
@@ -60,7 +65,7 @@ void Enemy::StateAttack()
 {
 }
 
-void Enemy::StateDamege()
+void Enemy::StateDamage()
 {
 }
 
@@ -74,9 +79,9 @@ Enemy::Enemy(const CVector2D& p, bool flip):Base(eType_Enemy){
 	//再生アニメーション設定
 	m_img.ChangeAnimation(0);
 	//座標設定
-	m_pos = p;
+	m_pos_old = m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(128, 224);
+	m_img.SetCenter(128, 140);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -84,7 +89,7 @@ Enemy::Enemy(const CVector2D& p, bool flip):Base(eType_Enemy){
 	//着地フラグ
 	m_is_ground = true;
 	//当たり判定用矩形設定
-	m_rect = CRect(-32, -128, 32, 0);
+	m_rect = CRect(-80, -70, -40, 0);
 	//攻撃番号
 	m_attack_no = rand();
 	//ダメージ番号
@@ -94,6 +99,25 @@ Enemy::Enemy(const CVector2D& p, bool flip):Base(eType_Enemy){
 }
 
 void Enemy::Update(){
+	m_pos_old = m_pos;
+	switch (m_state) {
+		//通常状態
+	case eState_Idle:
+		StateIdle();
+		break;
+		//攻撃状態
+	case eState_Attack:
+		StateAttack();
+		break;
+		//ダメージ状態
+	case eState_Damage:
+		StateDamage();
+		break;
+		//ダウン状態
+	case eState_Down:
+		StateDown();
+		break;
+	}
 	//落ちていたら落下中状態へ移行
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
 		m_is_ground = false;
@@ -139,9 +163,10 @@ void Enemy::Collision(Base* b) {
 	case eType_Field:
 		//Field型へキャスト、型変換出来たら
 		if (Map* m = dynamic_cast<Map*>(b)) {
-			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y));				if (t != 0)
+			int t = m->ColisionMap(CVector2D(m_pos.x, m_pos_old.y),m_rect);
+			if (t != 0)
 				m_pos.x = m_pos_old.x;
-			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y));
+			t = m->ColisionMap(CVector2D(m_pos_old.x, m_pos.y),m_rect);
 			if (t != 0) {
 				m_pos.y = m_pos_old.y;
 				//落下速度リセット

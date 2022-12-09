@@ -12,7 +12,7 @@ Slash::Slash(const CVector2D& pos, bool flip, int type, int attack_no):Base(type
 	//中心位置設定
 	m_img.SetCenter(64, 64);
 	//当たり判定用矩形
-	m_rect = CRect(-64, -64, 64, 64);
+	m_rect = CRect(-64, -64, 32, 64);
 	//再生アニメーション設定（非ループ）
 	m_img.ChangeAnimation(0, false);
 	//攻撃番号
@@ -33,4 +33,5 @@ void Slash::Draw(){
 	m_img.SetPos(GetScreenPos(m_pos));
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
+	DrawRect();
 }

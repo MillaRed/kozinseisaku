@@ -9,7 +9,7 @@ void Player::StateIdle() {
 	//移動量
 	const float move_speed = 6;
 	//ジャンプ力
-	const float jump_pow = 12;
+	const float jump_pow = 15;
 	//移動フラグ
 	bool move_flag = false;
 	//左移動
@@ -102,9 +102,9 @@ Player::Player(const CVector2D& p,bool flip):Base(eType_Player) {
 	//座標設定
 	m_pos_old=m_pos = p;
 	//中心位置設定
-	m_img.SetCenter(126, 200);
+	m_img.SetCenter(126, 190);
 	//当たり判定用矩形設定
-	m_rect = CRect(-50, -100, 0, 0);
+	m_rect = CRect(-50, -90, 0, 0);
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -193,10 +193,10 @@ void Player::Collision(Base* b){
 		}
 	case  eType_Field:
 		if (Map* m = dynamic_cast<Map*>(b)) {
-			int t = m->CollisionMap(CVector2D(m_pos.x, m_pos_old.y));
+			int t = m->ColisionMap(CVector2D(m_pos.x, m_pos_old.y),m_rect);
 			if (t != 0)
 				m_pos.x = m_pos_old.x;
-			t = m->CollisionMap(CVector2D(m_pos_old.x, m_pos.y));
+			t = m->ColisionMap(CVector2D(m_pos_old.x, m_pos.y),m_rect);
 			if (t != 0) {
 				//地面の高さに戻す
 				m_pos.y = m_pos_old.y;

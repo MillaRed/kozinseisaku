@@ -66,7 +66,7 @@ Map::Map(int stage, const CVector2D& nextplayerpos) :Base(eType_Field) {
 			CVector2D(400, 500)));
 		//プレイヤーの生成
 		//敵の生成
-		Base::Add(new Enemy(CVector2D(32*20, 32*15), false));
+		Base::Add(new Enemy(CVector2D(32*30, 32*28), false));
 		//ボスの生成
 		break;
 	case 2:
