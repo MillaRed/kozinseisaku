@@ -61,16 +61,23 @@ void Enemy::StateWait(){
 	}
 }
 
-void Enemy::StateAttack()
-{
+void Enemy::StateAttack(){
+	//攻撃アニメーションへ変更
+	m_img.ChangeAnimation(eAnimAttack01, false);
 }
 
-void Enemy::StateDamage()
-{
+void Enemy::StateDamage(){
+	m_img.ChangeAnimation(eAnimDamage, false);
+	if (m_img.CheckAnimationEnd()) {
+		m_state = eState_Idle;
+	}
 }
 
-void Enemy::StateDown()
-{
+void Enemy::StateDown(){
+	m_img.ChangeAnimation(eAnimDown, false);
+	if (m_img.CheckAnimationEnd()) {
+		m_kill = true;
+	}
 }
 
 Enemy::Enemy(const CVector2D& p, bool flip):Base(eType_Enemy){
@@ -150,7 +157,7 @@ void Enemy::Collision(Base* b) {
 			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
 				//同じ攻撃の連続ダメージ防止
 				m_damage_no = s->GetAttackNo();
-				m_hp - 50;
+				m_hp - 100;
 				if (m_hp <= 0) {
 					m_state = eState_Down;
 				}

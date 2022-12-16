@@ -3,6 +3,7 @@
 Field::Field():Base(eType_Field) {
 	m_town = COPY_RESOURCE("Town", CImage);
 	m_foreground = COPY_RESOURCE("ForeGround", CImage);
+	m_haikei = COPY_RESOURCE("haikei", CImage);
 	m_ground_y = 540;
 }
 

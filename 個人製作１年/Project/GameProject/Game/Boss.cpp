@@ -75,7 +75,7 @@ Boss::Boss(const CVector2D& p, bool flip):Base(eType_Boss){
 	//再生アニメーション設定
 	m_img.ChangeAnimation(0);
 	//座標設定
-	m_pos = p;
+	m_pos_old = m_pos = p;
 	//中心位置設定
 	m_img.SetCenter(128, 224);
 	//反転フラグ
@@ -96,6 +96,7 @@ Boss::Boss(const CVector2D& p, bool flip):Base(eType_Boss){
 }
 
 void Boss::Update(){
+	m_pos_old = m_pos;
 	//落ちていたら落下中状態へ移行
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
 		m_is_ground = false;

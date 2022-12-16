@@ -17,7 +17,7 @@ Game::Game():Base(eType_Scene) {
 	//
 	Base::Add(new Enemy(CVector2D(600, 800), false));
 	//ボスの生成
-	//Base::Add(new Boss(CVector2D(600, 600),false));
+	Base::Add(new Boss(CVector2D(600, 600),false));
 }
 
 Game::~Game(){
@@ -26,7 +26,7 @@ Game::~Game(){
 
 void Game::Update(){
 	//ボスがいなければゲームシーン終了
-	/*if (!Base::FindObject(eType_Boss)) {
+	if (!Base::FindObject(eType_Boss)) {
 		//全てのオブジェクトを破棄
 		Base::KillAll();
 		//ゲームクリアシーン
@@ -38,5 +38,5 @@ void Game::Update(){
 		Base::KillAll();
 		//ゲームオーバーシーン
 		Base::Add(new GameOver());
-	}*/
+	}
 }
