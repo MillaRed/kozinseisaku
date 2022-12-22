@@ -11,4 +11,5 @@ public:
 	~GameClear();
 	void Update();
 	void Draw();
+	bool pull;
 };

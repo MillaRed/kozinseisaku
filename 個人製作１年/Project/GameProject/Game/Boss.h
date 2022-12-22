@@ -29,7 +29,7 @@ private:
 	void StateIdle();
 	void StateWait();
 	void StateAttack();
-	void StateDamege();
+	void StateDamage();
 	void StateDown();
 public:
 	Boss(const CVector2D& p, bool flip);

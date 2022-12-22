@@ -6,4 +6,5 @@ public:
 	Game();
 	~Game();
 	void Update();
+	bool pull;
 };

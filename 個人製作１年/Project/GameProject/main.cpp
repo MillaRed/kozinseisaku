@@ -84,11 +84,13 @@ void Init(void)
 	*/
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player.png", player_anim_data, 196, 196));
 	ADD_RESOURCE("Enemy", CImage::CreateImage("Image/Enemy.png", enemy_anim_data, 144, 144));
-	ADD_RESOURCE("Map", CImage::CreateImage("Image/MapTip2.png"));
+	ADD_RESOURCE("Map", CImage::CreateImage("Image/MapTip.png"));
 	ADD_RESOURCE("Effect_Slash", CImage::CreateImage("Image/Effect_Slash.png", effect_slash_anim_data, 128, 128));
 	ADD_RESOURCE("Boss", CImage::CreateImage("Image/Boss.png",boss_anim_data,196,196));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Title.png"));
 	ADD_RESOURCE("haikei", CImage::CreateImage("Image/haikei.png"));
+	ADD_RESOURCE("GameClear", CImage::CreateImage("Image/GameClear.png"));
+	ADD_RESOURCE("Gauge", CImage::CreateImage("Image/Gauge.png"));
 
 	Base::Add(new Title());
 

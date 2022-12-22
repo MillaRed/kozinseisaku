@@ -1,6 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
-
+class Gauge;
 class Player :public Base {
 	//状態
 	enum {
@@ -17,12 +17,13 @@ class Player :public Base {
 	bool m_flip;
 	//着地フラグ
 	bool m_is_ground;
+	int m_hp;
+	int m_max_hp;
+	Gauge* m_gauge;
 	//攻撃番号
 	int m_attack_no;
 	//ダメージ番号
 	int m_damage_no;
-	//ヒットポイント
-	int m_hp;
 	//エリアチェンジフラグ
 	bool m_enable_area_change;
 	//エリアチェンジオブジェクトに触れているフラグ
@@ -35,6 +36,7 @@ class Player :public Base {
 	void StateDown();
 public:
 	Player(const CVector2D& p,bool flip);
+	~Player();
 	void Update();
 	void Draw();
 	void Collision(Base* b);

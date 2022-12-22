@@ -1,7 +1,7 @@
 #include "Title.h"
 #include "../Game/Game.h"
 
-Title::Title():Base(eType_Scene),m_title_text("C:\\Windows\\Fonts\\msgothic.ttc",64) {
+Title::Title():Base(eType_Scene),m_title_text("C:\\Windows\\Fonts\\msgothic.ttc",100) {
 	m_img = COPY_RESOURCE("Title", CImage);
 }
 
@@ -22,5 +22,5 @@ void Title::Update(){
 void Title::Draw(){
 	m_img.Draw();
 	//•¶Žš•\Ž¦
-	m_title_text.Draw(200, 100, 0, 0, 0, "Title");
+	m_title_text.Draw(800, 300, 50, 50, 50, "Title");
 }

@@ -11,6 +11,7 @@ void Field::Draw(){
 	float sc;
 	sc = m_scroll.x / 4;
 	m_town.SetRect(sc, 0, sc + 1280, 720);
+	m_haikei.Draw();
 	//m_town.Draw();
 	 
 	sc = m_scroll.x;

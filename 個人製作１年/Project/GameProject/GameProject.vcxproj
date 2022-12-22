@@ -19,6 +19,7 @@
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Boss.cpp" />
     <ClCompile Include="Game\GameData.cpp" />
+    <ClCompile Include="Game\Gauge.cpp" />
     <ClCompile Include="Game\Map.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\Slash.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Game\Boss.h" />
     <ClInclude Include="Game\GameData.h" />
+    <ClInclude Include="Game\Gauge.h" />
     <ClInclude Include="Game\Map.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\Slash.h" />

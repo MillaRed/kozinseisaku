@@ -64,6 +64,10 @@ void Enemy::StateWait(){
 void Enemy::StateAttack(){
 	//攻撃アニメーションへ変更
 	m_img.ChangeAnimation(eAnimAttack01, false);
+	//カウント０で通常状態
+	if (m_img.CheckAnimationEnd()){
+		m_state = eState_Idle;
+	}
 }
 
 void Enemy::StateDamage(){
@@ -124,6 +128,10 @@ void Enemy::Update(){
 	case eState_Down:
 		StateDown();
 		break;
+		//待機状態
+	case eState_Wait:
+		StateWait();
+		break;
 	}
 	//落ちていたら落下中状態へ移行
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
@@ -141,7 +149,7 @@ void Enemy::Draw(){
 	//位置設定
 	m_img.SetPos(GetScreenPos(m_pos));
 	//反転設定
-	m_img.SetFlipH(m_flip);
+	m_img.SetFlipH(!m_flip);
 	//描画
 	m_img.Draw();
 	//当たり判定用矩形の表示
@@ -157,7 +165,7 @@ void Enemy::Collision(Base* b) {
 			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
 				//同じ攻撃の連続ダメージ防止
 				m_damage_no = s->GetAttackNo();
-				m_hp - 100;
+				m_hp -= 30;
 				if (m_hp <= 0) {
 					m_state = eState_Down;
 				}

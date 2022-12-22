@@ -253,34 +253,30 @@ static TexAnim bossIdle[] = {
 	{ 3,5 },
 };
 static TexAnim bossRun[] = {
-	{ 40,2 },
-	{ 41,2 },
-	{ 42,2 },
-	{ 43,2 },
+	{ 40,4 },
+	{ 41,4 },
+	{ 42,4 },
+	{ 43,4 },
 };
 static TexAnim bossJumpUp[] = {
-	{ 10,0 },
-	{ 11,0 },
-	{ 12,0 },
-	{ 13,0 },
+	{ 0,0 },
 };
 static TexAnim bossJumpDown[] = {
 	{ 0,0 },
 };
 static TexAnim bossAttack01[] = {
-	{ 5,0 },
-	{ 6,0 },
-	{ 7,0 },
-	{ 8,0 },
+	{ 5,4 },
+	{ 6,4 },
+	{ 7,4 },
+	{ 8,4 },
 };
 static TexAnim bossAttack01End[] = {
 	{ 0,0 },
 };
 static TexAnim bossDamage[] = {
-	{ 80,0 },
-	{ 81,0 },
-	{ 82,0 },
-	{ 83,0 },
+	{ 80,4 },
+	{ 81,4 },
+	{ 82,4 },
 };
 static TexAnim bossDamageEnd[] = {
 	{ 0,0 },

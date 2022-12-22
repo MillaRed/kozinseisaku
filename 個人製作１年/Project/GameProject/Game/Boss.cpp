@@ -30,6 +30,11 @@ void Boss::StateIdle(){
 		m_flip = false;
 		move_flag = true;
 	}
+	if (player->m_pos.x > m_pos.x + 64) {
+		//攻撃状態へ移行
+		m_state = eState_Attack;
+		m_attack_no++;
+	}
 	if (move_flag) {
 		//走るアニメーション
 		m_img.ChangeAnimation(eAnimRun);
@@ -49,24 +54,31 @@ void Boss::StateIdle(){
 void Boss::StateWait(){
 	//待機アニメーション
 	m_img.ChangeAnimation(eAnimIdle);
-	//カウント０で通常状態
-	if (--m_cnt <= 0) {
-		//待機時間３秒～５秒
-		m_cnt = rand() % 120 * 180;
+	if(m_img.CheckAnimationEnd()){
 		m_state = eState_Idle;
 	}
 }
 
-void Boss::StateAttack()
-{
+void Boss::StateAttack(){
+	//攻撃アニメーションへ変更
+	m_img.ChangeAnimation(eAnimAttack01, false);
+	if (m_img.CheckAnimationEnd()) {
+		m_state = eState_Idle;
+	}
 }
 
-void Boss::StateDamege()
-{
+void Boss::StateDamage(){
+	m_img.ChangeAnimation(eAnimDamage, false);
+	if (m_img.CheckAnimationEnd()) {
+		m_state = eState_Idle;
+	}
 }
 
-void Boss::StateDown()
-{
+void Boss::StateDown(){
+	m_img.ChangeAnimation(eAnimDown, false);
+	if (m_img.CheckAnimationEnd()) {
+		m_kill = true;
+	}
 }
 
 Boss::Boss(const CVector2D& p, bool flip):Base(eType_Boss){
@@ -97,6 +109,28 @@ Boss::Boss(const CVector2D& p, bool flip):Base(eType_Boss){
 
 void Boss::Update(){
 	m_pos_old = m_pos;
+	switch (m_state) {
+		//通常状態
+	case eState_Idle:
+		StateIdle();
+		break;
+		//攻撃状態
+	case eState_Attack:
+		StateAttack();
+		break;
+		//ダメージ状態
+	case eState_Damage:
+		StateDamage();
+		break;
+		//ダウン状態
+	case eState_Down:
+		StateDown();
+		break;
+		//待機状態
+	case eState_Wait:
+		StateWait();
+		break;
+	}
 	//落ちていたら落下中状態へ移行
 	if (m_is_ground && m_vec.y > GRAVITY * 4)
 		m_is_ground = false;
@@ -113,7 +147,7 @@ void Boss::Draw(){
 	//位置設定
 	m_img.SetPos(GetScreenPos(m_pos));
 	//反転設定
-	m_img.SetFlipH(m_flip);
+	m_img.SetFlipH(!m_flip);
 	//描画
 	m_img.Draw();
 	//当たり判定用矩形の表示
@@ -129,7 +163,7 @@ void Boss::Collision(Base* b) {
 			if (m_damage_no != s->GetAttackNo() && Base::CollisionRect(this, s)) {
 				//同じ攻撃の連続ダメージ防止
 				m_damage_no = s->GetAttackNo();
-				m_hp - 50;
+				m_hp -= 30;
 				if (m_hp <= 0) {
 					m_state = eState_Down;
 				}

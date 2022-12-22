@@ -3,6 +3,7 @@
 #include "Field.h"
 #include "Slash.h"
 #include "Map.h"
+#include "Gauge.h"
 #include "AreaChange.h"
 
 void Player::StateIdle() {
@@ -105,6 +106,10 @@ Player::Player(const CVector2D& p,bool flip):Base(eType_Player) {
 	m_img.SetCenter(126, 190);
 	//当たり判定用矩形設定
 	m_rect = CRect(-50, -90, 0, 0);
+	//ゲージ生成
+	Base::Add(m_gauge = new Gauge(0));
+	//HP設定
+	m_hp = m_max_hp = 200;
 	//反転フラグ
 	m_flip = flip;
 	//通常状態へ
@@ -115,11 +120,15 @@ Player::Player(const CVector2D& p,bool flip):Base(eType_Player) {
 	m_attack_no = rand();
 	//ダメージ番号
 	m_damage_no = -1;
-	//ヒットポイント
-	m_hp = 100;
 
 	m_enable_area_change = true;
 	m_hit_area_change = false;
+}
+
+Player::~Player() {
+	//ゲージ削除
+	if (m_gauge)
+		m_gauge->SetKill();
 }
 
 void Player::Update(){
@@ -159,6 +168,9 @@ void Player::Update(){
 	if (!m_enable_area_change && !m_hit_area_change)
 		m_enable_area_change = true;
 	m_hit_area_change = false;
+	//ゲージ更新
+	m_gauge->SetValue((float)m_hp / m_max_hp);
+	m_gauge->m_pos = CVector2D(0, 0);
 }
 
 void Player::Draw(){
